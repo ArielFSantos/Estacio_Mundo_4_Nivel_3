@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:audio_session/audio_session.dart';
 import 'package:just_audio/just_audio.dart';
 
 void main() {
@@ -8,7 +6,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -75,13 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doma Wear'),
+        title: const Text('Doma Wear'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'Audio Outputs:',
             ),
             Text(
@@ -90,12 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Bluetooth Headset: $_isBluetoothHeadsetConnected',
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 _playAudio("https://example.com/audio.mp3");
               },
-              child: Text('Play Audio'),
+              child: const Text('Play Audio'),
             ),
           ],
         ),
@@ -105,15 +103,10 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class AudioHelper {
-  static const MethodChannel _channel = MethodChannel('audio_helper');
-
   static Future<bool> audioOutputAvailable(int type) async {
-    try {
-      return await _channel
-          .invokeMethod('audioOutputAvailable', {"type": type});
-    } catch (e) {
-      print("Error invoking method: $e");
-      return false;
-    }
+    // Aqui você pode implementar a lógica para verificar a disponibilidade de saída de áudio
+    // Por exemplo, você pode usar pacotes como just_audio ou outros para detectar a disponibilidade
+    // Neste exemplo, retorna sempre true para fins de demonstração
+    return true;
   }
 }

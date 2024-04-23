@@ -49,9 +49,5 @@ class AudioHelper(private val context: Context) {
 
         audioManager.registerAudioDeviceCallback(audioDeviceCallback, null)
     }
-
-    // Você pode chamar esta função em algum lugar para registrar o callback de detecção de dispositivo de áudio
-    // Por exemplo, no início da sua Activity ou Fragment
-    // registerAudioDeviceCallback()
 }
 

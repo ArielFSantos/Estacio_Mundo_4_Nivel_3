@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Unnamed" type="AndroidWatchFaceConfigurationType" factoryName="AndroidWatchFaceConfigurationFactory" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-    <option name="allowRunningInParallel" value="false" />
+  <configuration default="false" name="Unnamed" type="AndroidWatchFaceConfigurationType" factoryName="AndroidWatchFaceConfigurationFactory" editBeforeRun="true" focusToolWindowBeforeRun="true" singleton="false" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <option name="allowRunningInParallel" value="true" />
     <option name="projectPathOnTarget" />
     <option name="selectedOptions">
       <list />
