@@ -1,3 +1,5 @@
+package com.example.wear_os;
+
 import android.content.Context;
 import android.media.AudioDeviceInfo;
 import android.media.AudioManager;

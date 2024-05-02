@@ -1,5 +1,4 @@
-package com.example.wear_os; // Substitua com o pacote apropriado do seu projeto
-
+package com.example.wear_os;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.media.AudioDeviceInfo;
