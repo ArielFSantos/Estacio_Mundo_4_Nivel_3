@@ -1,24 +1,28 @@
-package com.example.wear_os;
+package com.example.wear_os; // Substitua com o pacote apropriado do seu projeto
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import android.media.AudioDeviceInfo;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AudioHelper audioHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // Inicializa o AudioHelper com o contexto atual
+        audioHelper = new AudioHelper(this);
+
+        // Verifica se há alto-falante integrado disponível
+        boolean isSpeakerAvailable = audioHelper.audioOutputAvailable(AudioDeviceInfo.TYPE_BUILTIN_SPEAKER);
+
+        // Verifica se um fone de ouvido Bluetooth está conectado
+        boolean isBluetoothHeadsetConnected = audioHelper.audioOutputAvailable(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP);
+
+        // Aqui você pode usar as variáveis isSpeakerAvailable e isBluetoothHeadsetConnected conforme necessário
+        // Por exemplo, você pode exibir uma mensagem ou tomar uma ação com base nesses valores
     }
 }
