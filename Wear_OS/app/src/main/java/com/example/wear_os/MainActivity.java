@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 import java.util.Locale;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     private AudioHelper audioHelper;
@@ -102,21 +104,23 @@ public class MainActivity extends AppCompatActivity {
             audioManager.registerAudioDeviceCallback(new AudioManager.AudioDeviceCallback() {
 
                 public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
-                    super.onAudioDevicesAdded(addedDevices);
-
-                    if (audioOutputAvailable(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, addedDevices)) {
-                        // Um fone de ouvido Bluetooth acabou de ser conectado
-                        Log.d("Bluetooth", "Bluetooth headset connected");
+                    // Implementação do método onAudioDevicesAdded
+                    for (AudioDeviceInfo device : addedDevices) {
+                        if (device.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP) {
+                            // Um fone de ouvido Bluetooth acabou de ser conectado
+                            Log.d("Bluetooth", "Bluetooth headset connected");
+                        }
                     }
                 }
 
 
                 public void onAudioDevicesRemoved(AudioDeviceInfo[] removedDevices) {
-                    super.onAudioDevicesRemoved(removedDevices);
-
-                    if (!audioOutputAvailable(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, removedDevices)) {
-                        // Um fone de ouvido Bluetooth não está mais conectado
-                        Log.d("Bluetooth", "Bluetooth headset disconnected");
+                    // Implementação do método onAudioDevicesRemoved
+                    for (AudioDeviceInfo device : removedDevices) {
+                        if (device.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP) {
+                            // Um fone de ouvido Bluetooth não está mais conectado
+                            Log.d("Bluetooth", "Bluetooth headset disconnected");
+                        }
                     }
                 }
             }, null);
