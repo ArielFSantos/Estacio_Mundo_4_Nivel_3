@@ -2,6 +2,7 @@ package com.example.wear_os;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioDeviceCallback;
 import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 import java.util.Locale;
+
 
 
 
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void registerAudioDeviceCallback() {
         if (audioManager != null) {
-            audioManager.registerAudioDeviceCallback(new AudioManager.AudioDeviceCallback() {
+            audioManager.registerAudioDeviceCallback(new AudioDeviceCallback() {
 
                 public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
                     // Implementação do método onAudioDevicesAdded
